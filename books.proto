@@ -1,0 +1,35 @@
+syntax="proto3";
+
+package books;
+
+service allBooks{
+    rpc getAllBook (none) returns (allResponceBook){};
+    rpc getBook(requestID) returns (responceBook){};
+    rpc createBook(responceBook) returns(none){};
+    rpc deleteBook(requestID) returns(none){};
+    rpc updateBook(updatebook) returns (responceBook){};
+    rpc replaceBook(updatebook) returns (responceBook){};
+}
+
+message requestID{
+    int32 ID = 1;
+}
+
+message responceBook{
+    int32 ID=1;
+    string Name=2;
+    string Des=3;
+    string Date=4;
+}
+message allResponceBook{
+    responceBook b=1;
+}
+message updatebook{
+    int32 id = 1;
+    responceBook b = 2;
+}
+
+
+message none{
+
+}
