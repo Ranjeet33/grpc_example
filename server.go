@@ -39,10 +39,14 @@ func (s *server) GetBook(ctx context.Context, request *books.RequestID) (*books.
 }
 
 func (s *server) GetAllBook(ctx context.Context, request *books.None) (*books.AllResponceBook, error) {
-	for i := 0; i < len(allBook); i++ {
-		return &books.AllResponceBook{B: []*books.ResponceBook{&books.ResponceBook{ID: allBook[i].ID, Name: allBook[i].Name, Des: allBook[i].Des, Date: allBook[i].Date}}}, nil
+	a := &books.AllResponceBook{B: []*books.ResponceBook{
+		{ID: 1, Name: "maths", Des: "for 8 std", Date: "01/01/1992"},
+		{ID: 2, Name: "science", Des: "for 7 std", Date: "10/08/2010"},
+		{ID: 3, Name: "english", Des: "for 6 std", Date: "01/01/1990"},
+		{ID: 5, Name: "so. sci.", Des: "for 9 std", Date: "01/10/2006"},
+	},
 	}
-	return &books.AllResponceBook{B: []*books.ResponceBook{}}, nil
+	return a, nil
 }
 
 func (s *server) CreateBook(ctx context.Context, request *books.ResponceBook) (*books.None, error) {
